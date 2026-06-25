@@ -2,10 +2,10 @@
 
 Aplicación de e-commerce **full-stack** con frontend en React + Vite y backend propio en Node/Express + MongoDB. Permite navegar y filtrar productos, gestionar un carrito, registrarse e iniciar sesión con JWT, realizar un checkout y administrar el catálogo desde un panel protegido.
 
-> **Origen del proyecto:** nació como el trabajo final del curso **React JS — Talento Tech 2025** ([repo original](https://github.com/TU-USUARIO/REPO-ORIGINAL)), donde era un frontend que consumía MockAPI e ImgBB. A partir de esa base evolucionó hasta convertirse en una plataforma full-stack con backend, autenticación real y almacenamiento de imágenes en Cloudinary.
+> **Origen del proyecto:** nació como el trabajo final del curso **React JS — Talento Tech 2025** ([repo original](https://github.com/lanusroots/test_ecommerce_tt_2025)), donde era un frontend que consumía MockAPI e ImgBB. A partir de esa base evolucionó hasta convertirse en una plataforma full-stack con backend, autenticación real y almacenamiento de imágenes en Cloudinary.
 
 🔗 **Demo frontend:** https://mis4deseos.netlify.app/
-🔗 **API (producción):** _(pendiente de deploy — Render / Railway)_
+🔗 **API (producción):** https://mis4deseos-api.onrender.com
 
 ---
 
