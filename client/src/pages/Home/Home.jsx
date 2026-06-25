@@ -1,4 +1,4 @@
-import "./Home.css";
+import "./home.css";
 import { Carousel } from "../../components/Carousel/Carousel";
 
 export const Home = () => {

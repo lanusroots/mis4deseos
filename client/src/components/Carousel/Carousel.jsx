@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./Carousel.css";
+import "./carousel.css";
 
 const images = [
   "/images/banner4.webp",

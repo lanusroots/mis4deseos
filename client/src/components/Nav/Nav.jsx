@@ -2,7 +2,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { useCartContext } from "../../context/CartContext/useCartContext"
 import { useAuthContext } from "../../context/AuthContext/useAuthContext"
-import "./Nav.css"
+import "./nav.css"
 
 export const Nav = () => {
   const { getTotalItems } = useCartContext()

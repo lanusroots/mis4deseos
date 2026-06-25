@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Item } from "../Item/Item";
-import "./ItemList.css";
+import "./itemList.css";
 
 export const ItemList = ({ list }) => {
   if (!list.length) return <p>No hay productos disponibles</p>;

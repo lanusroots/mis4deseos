@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "./Item.css";
+import "./item.css";
 
 export const Item = ({ _id, name, sizes, imageUrl }) => {
   const price = Math.min(...sizes.map(s => s.price));

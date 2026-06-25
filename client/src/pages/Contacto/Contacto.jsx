@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { sendContact } from "../../services/contact"
-import "./Contacto.css"
+import "./contacto.css"
 
 export const Contacto = () => {
   const [formData, setFormData] = useState({
