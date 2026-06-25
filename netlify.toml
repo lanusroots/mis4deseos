@@ -1,0 +1,12 @@
+# Configuración de deploy del frontend (monorepo con pnpm)
+# Netlify corre desde la raíz del repo, instala con pnpm (detecta pnpm-lock.yaml)
+# y ejecuta el build del workspace client.
+[build]
+  command = "pnpm build"        # script raíz: pnpm -C client run build → genera client/dist
+  publish = "client/dist"
+
+# Redirect SPA: cualquier ruta sirve index.html (evita el 404 al refrescar en /productos, /perfil, etc.)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
