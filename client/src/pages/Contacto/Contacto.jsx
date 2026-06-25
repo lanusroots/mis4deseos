@@ -1,81 +1,99 @@
-import { useState } from "react";
-import "./Contacto.css";
+import { useState } from "react"
+import { sendContact } from "../../services/contact"
+import "./Contacto.css"
 
 export const Contacto = () => {
   const [formData, setFormData] = useState({
-    nombre: "",
+    name: "",
     email: "",
-    telefono: "",
-    mensaje: "",
-  });
+    phone: "",
+    subject: "Consulta general",
+    message: "",
+  })
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState("")
+  const [success, setSuccess] = useState("")
 
   const handleChange = (e) => {
-    const { id, value } = e.target;
-    setFormData((prev) => ({ ...prev, [id]: value }));
-  };
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setError("")
+    setSuccess("")
+    setLoading(true)
 
-    alert("Mensaje enviado, ¡Nos comunicaremos pronto!!");
-
-    // Limpiar formulario
-    setFormData({
-      nombre: "",
-      email: "",
-      telefono: "",
-      mensaje: "",
-    });
-  };
+    try {
+      await sendContact(formData)
+      setSuccess("¡Mensaje enviado! Te contactaremos pronto.")
+      setFormData({ name: "", email: "", phone: "", subject: "Consulta general", message: "" })
+    } catch (err) {
+      setError(err.message)
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
     <section className="contacto-container">
       <h2>Contacto</h2>
 
+      {error && <div className="error-message">{error}</div>}
+      {success && <div className="success-message">{success}</div>}
+
       <form className="contacto-form" onSubmit={handleSubmit}>
-        <label htmlFor="nombre">Nombre</label>
+        <label htmlFor="name">Nombre</label>
         <input
           type="text"
-          id="nombre"
-          placeholder="María Pérez"
-          value={formData.nombre}
+          id="name"
+          name="name"
+          value={formData.name}
           onChange={handleChange}
+          placeholder="María Pérez"
           required
+          disabled={loading}
         />
 
         <label htmlFor="email">Email</label>
         <input
           type="email"
           id="email"
-          placeholder="tunombre@email.com"
+          name="email"
           value={formData.email}
           onChange={handleChange}
+          placeholder="tunombre@email.com"
           required
+          disabled={loading}
         />
 
-        <label htmlFor="telefono">Teléfono (opcional)</label>
+        <label htmlFor="phone">Teléfono (opcional)</label>
         <input
           type="tel"
-          id="telefono"
-          placeholder="1123445567"
-          value={formData.telefono}
+          id="phone"
+          name="phone"
+          value={formData.phone}
           onChange={handleChange}
+          placeholder="1123445567"
+          disabled={loading}
         />
 
-        <label htmlFor="mensaje">Mensaje</label>
+        <label htmlFor="message">Mensaje</label>
         <textarea
-          id="mensaje"
+          id="message"
+          name="message"
           rows="5"
-          placeholder="Escribí tu mensaje aquí..."
-          value={formData.mensaje}
+          value={formData.message}
           onChange={handleChange}
+          placeholder="Escribí tu mensaje aquí..."
           required
-        ></textarea>
+          disabled={loading}
+        />
 
-        <button type="submit" className="btn-submit">
-          Enviar
+        <button type="submit" className="btn-submit" disabled={loading}>
+          {loading ? "Enviando..." : "Enviar"}
         </button>
       </form>
     </section>
-  );
-};
+  )
+}

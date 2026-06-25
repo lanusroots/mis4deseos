@@ -1,41 +1,40 @@
-const BASE_URL = "https://6900bd5fff8d792314bb4086.mockapi.io/products"
+import { apiFetch } from './api'
 
-export const createProduct = async (product) => {
-  const res = await fetch(BASE_URL, {
-    method: "POST",
-    headers: { "Content-type": "application/json" },
-    body: JSON.stringify(product),
+export const getProducts = (category, search, { sort, sizes } = {}) => {
+  const params = new URLSearchParams()
+  if (category && category !== 'Todos') params.append('category', category)
+  if (search) params.append('search', search)
+  if (sort && sort !== 'featured') params.append('sort', sort)
+  if (sizes && sizes.length) params.append('size', sizes.join(','))
+
+  const query = params.toString() ? `?${params.toString()}` : ''
+  return apiFetch(`/api/products${query}`)
+}
+
+export const getProductById = (id) => {
+  return apiFetch(`/api/products/${id}`)
+}
+
+export const getCategories = () => {
+  return apiFetch('/api/products/categories/all')
+}
+
+export const createProduct = (data) => {
+  return apiFetch('/api/products', {
+    method: 'POST',
+    body: JSON.stringify(data),
   })
-
-  if (!res.ok) {
-    throw new Error("No se pudo crear el producto")
-  }
-
-  const result = await res.json();
-  return result
 }
 
-export const getProducts = async (category)=>{
-  let url = BASE_URL
-  
-  if (category) {
-    url = `${BASE_URL}?category=${category}`
-  }
-
-  const res = await fetch(url)
-  if (!res.ok) {
-    throw new Error("Error al listar productos")
-  }
-
-  const results = await res.json()
-  return results
+export const updateProduct = (id, data) => {
+  return apiFetch(`/api/products/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify(data),
+  })
 }
 
-//traer uno por id
-export const getProductById = async (id) =>{
-  const res = await fetch(`${BASE_URL}/${id}`)
-  if (!res.ok) {
-    throw new Error("Error al obtener el producto")
-  }
-  return await res.json()
+export const deleteProduct = (id) => {
+  return apiFetch(`/api/products/${id}`, {
+    method: 'DELETE',
+  })
 }

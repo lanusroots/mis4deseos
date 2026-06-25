@@ -4,8 +4,7 @@ export const Footer = () => {
       <div className="footer__content">
         <p>
           © {new Date().getFullYear()} <span className="footer__icon">🎂</span>{" "}
-          <strong>mis4deseos</strong>. Creado por MaxFernandez. All rights
-          reserved.
+          <strong>mis4deseos</strong>. Creado por MaxFernandez. All rights reserved.
         </p>
 
         <div className="footer__socials">
@@ -36,5 +35,5 @@ export const Footer = () => {
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};

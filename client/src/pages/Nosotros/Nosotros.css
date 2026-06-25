@@ -1,14 +1,10 @@
-/* -------------------------------------------------
-   Nosotros.css — Normalizado
-------------------------------------------------- */
-
 .nosotros-container {
   max-width: 900px;
   margin: 4rem auto;
   padding: 2rem;
   background-color: var(--color-surface);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-medium);
+  border-radius: 12px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05);
   text-align: center;
 }
 
@@ -22,9 +18,9 @@
 .nosotros-img {
   width: 100%;
   max-width: 600px;
-  border-radius: var(--radius-lg);
+  border-radius: 12px;
   object-fit: cover;
-  box-shadow: var(--shadow-soft);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
 
 .nosotros-text h2 {
@@ -37,6 +33,7 @@
   color: var(--color-subtext);
   font-size: 1.05rem;
   line-height: 1.7;
+  margin-bottom: 1rem;
 }
 
 @media (max-width: 768px) {

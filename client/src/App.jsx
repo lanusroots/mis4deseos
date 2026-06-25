@@ -4,48 +4,70 @@ import { Nav } from "./components/Nav/Nav"
 import { ItemListContainer } from "./components/ItemListContainer/ItemListContainer"
 import { ItemDetailContainer } from "./components/ItemDetailContainer/ItemDetailContainer"
 import { CartProvider } from "./context/CartContext/CartProvider"
-import { Cart } from "./components/Cart/Cart"
-import { MainLayout } from "./layouts/MainLayout"
+import { AuthProvider } from "./context/AuthContext/AuthProvider"
 import { Footer } from "./components/Footer/Footer"
-import { AdminLayout } from "./layouts/AdminLayout"
-import { RutaProtegida } from "./components/RutaProtegida/RutaProtegida"
-import { ProductFormContainer } from "./components/adminComponents/ProductFormContainer/ProductFormContainer"
-import { Login } from "./components/Login/Login"
-import { Home } from "./components/Home/Home"
 import { Nosotros } from "./pages/Nosotros/Nosotros"
 import { Contacto } from "./pages/Contacto/Contacto"
+import { Home } from "./pages/Home/Home"
+import { Login } from "./pages/Login/Login"
+import { Register } from "./pages/Register/Register"
+import { Perfil } from "./pages/Perfil/Perfil"
+import { Cart } from "./pages/Cart/Cart"
+import { Admin } from "./pages/Admin/Admin"
+import { Checkout } from "./pages/Checkout/Checkout"
+import { ProtectedRoute } from "./components/ProtectedRoute"
 
 function App() {
   return (
     <BrowserRouter>
-      <CartProvider>
-        <Nav />
-        <Routes>
-          <Route element={<MainLayout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/detail/:id" element={<ItemDetailContainer />} />
-            <Route path="/nosotros" element={<Nosotros />} />
-            <Route path="/productos" element={<ItemListContainer />} />
-            <Route path="/contacto" element={<Contacto />} />
-            <Route path="/carrito" element={<Cart />} />
-            <Route path="*" element={<h2>Página no encontrada 😢</h2>} />
-          </Route>
+      <AuthProvider>
+        <CartProvider>
+          <Nav />
+          <main>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/detail/:id" element={<ItemDetailContainer />} />
+              <Route path="/nosotros" element={<Nosotros />} />
+              <Route path="/productos" element={<ItemListContainer />} />
+              <Route path="/contacto" element={<Contacto />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/cart" element={<Cart />} />
 
-          <Route path="/admin" element={<AdminLayout />}>
-            <Route index element={<Login />} />
+              {/* Rutas protegidas */}
+              <Route
+                path="/admin"
+                element={
+                  <ProtectedRoute adminOnly>
+                    <Admin />
+                  </ProtectedRoute>
+                }
+              />
 
-            <Route
-              path="alta-productos"
-              element={
-                <RutaProtegida>
-                  <ProductFormContainer />
-                </RutaProtegida>
-              }
-            />
-          </Route>
-        </Routes>
-        <Footer />
-      </CartProvider>
+              <Route 
+                path="/perfil" 
+                element={
+                  <ProtectedRoute>
+                    <Perfil />
+                  </ProtectedRoute>
+                } 
+              />
+            
+              <Route
+                path="/checkout"
+                element={
+                  <ProtectedRoute >
+                    <Checkout />
+                  </ProtectedRoute>
+                }
+              />
+
+              <Route path="*" element={<h2>Página no encontrada 😢</h2>} />
+            </Routes>
+          </main>
+          <Footer />
+        </CartProvider>
+      </AuthProvider>
     </BrowserRouter>
   )
 }

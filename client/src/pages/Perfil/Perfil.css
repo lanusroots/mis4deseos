@@ -1,0 +1,475 @@
+:root {
+  --color-accent: #7cc3b8;
+  --color-accent-hover: #5aa89a;
+  --color-text: #333;
+  --color-border: #e0e0e0;
+  --color-bg-light: #f8f9fa;
+}
+
+.perfil-container {
+  min-height: 80vh;
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, #e0f7f4 0%, #f8f9fa 100%);
+}
+
+.perfil-card {
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* ===== Header ===== */
+.perfil-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 3rem;
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-hover) 100%);
+  color: white;
+}
+
+.perfil-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  border: 4px solid white;
+}
+
+.perfil-info h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.perfil-info p {
+  margin: 0;
+  opacity: 0.9;
+  font-size: 1.1rem;
+}
+
+.perfil-badge {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.3rem 1rem;
+  background: linear-gradient(135deg, #ffc107 0%, #ffb300 100%);
+  color: #000;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* ===== Tabs ===== */
+.perfil-tabs {
+  display: flex;
+  border-bottom: 2px solid var(--color-border);
+  padding: 0 3rem;
+  background: var(--color-bg-light);
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 1.2rem 1.5rem;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #666;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.tab-btn i {
+  font-size: 1.1rem;
+}
+
+.tab-btn:hover {
+  color: var(--color-accent);
+  background: rgba(124, 195, 184, 0.05);
+}
+
+.tab-btn.active {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+  background: white;
+}
+
+/* ===== Content ===== */
+.perfil-content {
+  padding: 3rem;
+}
+
+.perfil-form {
+  max-width: 600px;
+}
+
+.perfil-form h3 {
+  margin: 0 0 2rem 0;
+  color: var(--color-text);
+  font-size: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 2px solid var(--color-border);
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(124, 195, 184, 0.1);
+}
+
+.form-group input:disabled {
+  background: var(--color-bg-light);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.disabled-input {
+  background: var(--color-bg-light) !important;
+  cursor: not-allowed !important;
+  color: #666;
+}
+
+/* ===== Messages ===== */
+.error-message {
+  background: #ffebee;
+  color: #c62828;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid #c62828;
+}
+
+.success-message {
+  background: #e8f5e9;
+  color: #2e7d32;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid #4caf50;
+}
+
+/* ===== Buttons ===== */
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-hover) 100%);
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(124, 195, 184, 0.3);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--color-accent);
+  color: var(--color-accent);
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background: var(--color-accent);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(255, 107, 107, 0.3);
+}
+
+/* ===== Password Tips ===== */
+.password-tips {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: var(--color-bg-light);
+  border-radius: 10px;
+  border-left: 4px solid var(--color-accent);
+}
+
+.password-tips h4 {
+  margin: 0 0 1rem 0;
+  color: var(--color-text);
+}
+
+.password-tips ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.password-tips li {
+  margin-bottom: 0.5rem;
+  color: #666;
+}
+
+/* ===== Pedidos ===== */
+.pedidos-section h3 {
+  margin: 0 0 2rem 0;
+  color: var(--color-text);
+  font-size: 1.5rem;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+.empty-state i {
+  font-size: 4rem;
+  color: #ccc;
+  margin-bottom: 1rem;
+}
+
+.empty-state p {
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.order-card {
+  border: 2px solid var(--color-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.order-card:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.order-header h4 {
+  margin: 0 0 0.3rem 0;
+  color: var(--color-text);
+}
+
+.order-date {
+  margin: 0;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.order-status {
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-entregado {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.status-en.camino {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.status-pendiente {
+  background: #fff9c4;
+  color: #f57f17;
+}
+
+.status-cancelado {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.order-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: var(--color-bg-light);
+  border-radius: 8px;
+}
+
+.order-details p {
+  margin: 0;
+  color: #666;
+}
+
+.order-total {
+  font-size: 1.1rem;
+}
+
+.order-total strong {
+  color: var(--color-accent);
+}
+
+/* ===== Danger Zone ===== */
+.danger-zone {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: #fff5f5;
+  border: 2px solid #ffcdd2;
+  border-radius: 12px;
+}
+
+.danger-zone h4 {
+  margin: 0 0 0.5rem 0;
+  color: #c62828;
+}
+
+.danger-zone p {
+  margin: 0 0 1rem 0;
+  color: #666;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .perfil-container {
+    padding: 1.5rem 1rem;
+  }
+
+  .perfil-header {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem 1.5rem;
+  }
+
+  .perfil-avatar {
+    width: 80px;
+    height: 80px;
+    font-size: 2.5rem;
+  }
+
+  .perfil-info h2 {
+    font-size: 1.5rem;
+  }
+
+  .perfil-tabs {
+    padding: 0 1rem;
+  }
+
+  .tab-btn {
+    font-size: 0.85rem;
+    padding: 1rem 0.5rem;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .tab-btn i {
+    font-size: 1.3rem;
+  }
+
+  .perfil-content {
+    padding: 2rem 1.5rem;
+  }
+
+  .order-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .order-details {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+}
+
+.order-items-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.order-item-tag {
+  background: #f0f7f6;
+  color: #5aa89a;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  border: 1px solid #c8e6e2;
+}
+
+.order-status {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.status-pending   { background: #fff8e1; color: #f59e0b; }
+.status-confirmed { background: #e8f5e9; color: #4caf50; }
+.status-preparing { background: #e3f2fd; color: #2196f3; }
+.status-delivered { background: #f0f7f6; color: #5aa89a; }
+.status-cancelled { background: #ffebee; color: #e74c3c; }

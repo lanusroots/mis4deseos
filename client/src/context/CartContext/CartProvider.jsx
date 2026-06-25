@@ -1,70 +1,71 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { CartContext } from "./CartContext"
 
 export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([])
+  const [cart, setCart] = useState(() => {
+    try {
+      const saved = localStorage.getItem("cart")
+      return saved ? JSON.parse(saved) : []
+    } catch {
+      return []
+    }
+  })
 
-  const exists = (id) => {
-    const exist = cart.some((p) => p.id === id)
-    return exist
-  }
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart))
+  }, [cart])
 
-  const addItem = (item) => {
-    if (exists(item.id)) {
-      const updatedCart = cart.map((prod) => {
-        if (prod.id === item.id) {
-          return { ...prod, quantity: prod.quantity + item.quantity }
-        } else {
-          return prod
-        }
-      })
-      setCart(updatedCart)
-      alert("Agregado al carrito")
+  // Clave única: mismo producto en distinto tamaño = línea distinta
+  const getKey = (item) => `${item._id}-${item.selectedSize}`
+
+  const exists = (item) => cart.some(c => getKey(c) === getKey(item))
+
+  const addItem = (product, quantity = 1) => {
+    if (exists(product)) {
+      setCart(cart.map(item =>
+        getKey(item) === getKey(product)
+          ? { ...item, quantity: item.quantity + quantity }
+          : item
+      ))
     } else {
-      setCart([...cart, item])
-      alert(`${item.name} agregado`)
+      setCart([...cart, { ...product, quantity }])
     }
   }
 
-  const deleteItem = (id) => {
-    const filtered = cart.filter((p) => p.id !== id)
-    setCart(filtered)
-    alert("Producto eliminado")
+  const removeItem = (item) => {
+    setCart(cart.filter(c => getKey(c) !== getKey(item)))
   }
 
-  const clearCart = () => {
-    setCart([])
+  const updateQuantity = (item, quantity) => {
+    if (quantity < 1) return
+    setCart(cart.map(c =>
+      getKey(c) === getKey(item) ? { ...c, quantity } : c
+    ))
   }
+
+  const clearCart = () => setCart([])
 
   const getTotalItems = () => {
-    const totalItems = cart.reduce((acc, p) => acc + p.quantity, 0)
-    return totalItems
+    return cart.reduce((acc, item) => acc + item.quantity, 0)
   }
 
-  const total = () => {
-    const total = cart.reduce((acc, p) => acc + p.price * p.quantity, 0)
-
-    return Math.round(total * 100) / 100
-  }
-
-  const checkout = () => {
-    const ok = confirm("¿Serguro que quiere finalizar la compra?")
-
-    if (ok) {
-      alert("¡Compra realizada con éxito!")
-      clearCart();
-    }
+  const getTotalPrice = () => {
+    return cart.reduce((acc, item) => acc + item.price * item.quantity, 0)
   }
 
   const values = {
     cart,
     addItem,
+    removeItem,
+    updateQuantity,
     clearCart,
     getTotalItems,
-    deleteItem,
-    total,
-    checkout,
+    getTotalPrice,
   }
 
-  return <CartContext.Provider value={values}>{children}</CartContext.Provider>
+  return (
+    <CartContext.Provider value={values}>
+      {children}
+    </CartContext.Provider>
+  )
 }
