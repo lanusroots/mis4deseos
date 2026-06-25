@@ -1,4 +1,4 @@
-import "./nosotros.css";
+import "./Nosotros.css";
 
 export const Nosotros = () => {
   return (

@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import "./itemDetail.css";
+import "./ItemDetail.css";
 import { useCartContext } from "../../context/CartContext/useCartContext";
 
 export const ItemDetail = ({ detail, related = [] }) => {

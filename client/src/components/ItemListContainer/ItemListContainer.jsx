@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useSearchParams } from "react-router-dom"
 import { ItemList } from "../ItemList/ItemList"
 import { getProducts, getCategories } from "../../services/products"
-import "./itemListContainer.css"
+import "./ItemListContainer.css"
 
 const SIZE_OPTIONS = ["Chica", "Grande", "Docena", "Individual"]
 
