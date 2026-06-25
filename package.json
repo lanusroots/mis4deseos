@@ -1,0 +1,14 @@
+{
+  "name": "mis4deseos",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -n api,web -c blue,green \"pnpm -C server run dev\" \"pnpm -C client run dev\"",
+    "dev:api": "pnpm -C server run dev",
+    "dev:web": "pnpm -C client run dev",
+    "build": "pnpm -C client run build",
+    "seed": "pnpm -C server run seed"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0"
+  }
+}
