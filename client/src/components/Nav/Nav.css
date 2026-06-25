@@ -1,0 +1,110 @@
+/* -------------------------------------------------
+   Nav.css — Normalizado
+------------------------------------------------- */
+
+/* Contenedor para logo + menú */
+.nav-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.nav-logo img {
+  height: 55px;
+  display: block;
+}
+
+/* Para mantener el centrado del menú */
+nav ul {
+  list-style: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+
+  flex-wrap: wrap;
+}
+
+nav {
+  background-color: var(--color-surface);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  /* 🔥 FIX: el padding horizontal descentraba la página */
+  padding: 15px 0;
+
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* 🔥 FIX: ahora el nav se centra EXACTAMENTE como el footer */
+nav ul {
+  list-style: none;
+
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+nav li {
+  position: relative;
+}
+
+nav a {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-text);
+  padding: 8px 12px;
+  transition: color 0.2s ease;
+}
+
+nav a:hover {
+  color: var(--color-primary);
+}
+
+/* Estado activo */
+.nav-link.active {
+  color: var(--color-primary) !important;
+}
+
+
+/* Badge del carrito */
+.in-cart {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: var(--color-primary);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  nav ul {
+    gap: 20px;
+    padding: 0 15px;
+  }
+
+  nav a {
+    font-size: 0.9rem;
+  }
+}

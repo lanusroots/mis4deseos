@@ -1,0 +1,15 @@
+/* -------------------------------------------------
+   App.css — Normalizado
+------------------------------------------------- */
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+}

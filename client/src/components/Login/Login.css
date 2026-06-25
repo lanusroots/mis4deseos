@@ -1,0 +1,39 @@
+/* ------------------------------
+   Login.css — Normalizado
+------------------------------ */
+
+.session-form {
+  width: 380px;
+  margin: 60px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.session-form h2 {
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.session-form label {
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  color: var(--color-subtext);
+}
+
+.session-form button {
+  margin-top: 10px;
+}
+
+/* Textos informativos */
+.forgot,
+.register {
+  font-size: 14px;
+  color: var(--color-subtext);
+  text-align: center;
+}
+
+.register span {
+  font-weight: 600;
+}

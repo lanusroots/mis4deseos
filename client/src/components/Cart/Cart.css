@@ -1,0 +1,118 @@
+/* -------------------------------------------------
+   Cart.css — Normalizado
+------------------------------------------------- */
+
+.cart-wrapper {
+  max-width: 900px;
+  padding: 25px;
+  margin: 40px auto;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-medium);
+}
+
+.cart-title {
+  font-size: 22px;
+  font-weight: 600;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 10px;
+  margin-bottom: 25px;
+}
+
+.cart-header,
+.cart-item {
+  display: grid;
+  grid-template-columns: 1fr 120px;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.cart-item-left {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.cart-item-left img {
+  width: 85px;
+  height: 85px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+}
+
+.cart-item-info h3 {
+  font-size: 16px;
+  margin: 0;
+}
+
+.cart-description {
+  font-size: 13px;
+  color: var(--color-subtext);
+}
+
+.cart-subtotal {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.cart-delete {
+  margin-top: 8px;
+  color: #d9534f;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.cart-footer {
+  margin-top: 30px;
+  border-top: 1px solid var(--color-border);
+  padding-top: 20px;
+}
+
+.cart-total {
+  font-size: 20px;
+  font-weight: 600;
+  text-align: right;
+  color: var(--color-primary);
+}
+
+.cart-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.btn-empty,
+.btn-checkout {
+  padding: 12px 20px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  color: white;
+}
+
+/* Botones coherentes */
+.btn-empty {
+  background-color: var(--color-primary-hover);
+}
+
+.btn-checkout {
+  background-color: var(--color-primary);
+}
+
+.cart-empty {
+  text-align: center;
+  padding: 40px;
+}
+
+.btn-back {
+  margin-top: 15px;
+  display: inline-block;
+  background: var(--color-primary);
+  padding: 12px 20px;
+  border-radius: var(--radius-md);
+  color: white;
+}
